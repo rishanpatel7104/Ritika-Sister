@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritika Birthday 👑</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+
+
+body{
+margin:0;
+font-family:Poppins;
+background:#01040d;
+color:white;
+overflow-x:hidden;
+}
+
+
+
+.card:nth-child(1){transform:translate(0,0);}
+.card:nth-child(2){transform:translate(10px,10px);}
+.card:nth-child(3){transform:translate(20px,20px);}
+.card:nth-child(4){transform:translate(30px,30px);}
+.card:nth-child(5){transform:translate(40px,40px);}
+.card:nth-child(6){transform:translate(50px,50px);}
+
+/* video */
+video{
+width:90%;
+max-width:320px;
+border-radius:15px;
+box-shadow:0 0 20px #ff4da6;
+}
+
+
+/* countdown */
+.counter{
+font-size:1.8em;
+text-shadow:0 0 10px #ff4da6;
+margin-top:20px;
+}
+
+/* hearts */
+.heart{
+position:fixed;
+top:-10px;
+color:#ff4da6;
+animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(110vh);}}
+
+/* mobile text */
+p{font-size:15px}
+
+
+
+
+.screen{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+opacity:0;
+transform:scale(.9);
+transition:1s;
+padding:25px 15px;
+text-align:center;
+}
+.active{opacity:1; transform:scale(1);}
+.hidden{display:none;}
+
+h1{font-family:Pacifico;color:#ff4da6;font-size:28px}
+
+/* swiper section */
+.swiper{
+width:90%;
+max-width:260px;
+height:320px;
+position:relative;
+margin-bottom:40px;   /* ⭐ space for button */
+}
+
+.card{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px #ff4da6;
+transition:.8s;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* button */
+button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#ff4da6,#ff0080);
+color:white;
+font-size:16px;
+box-shadow:0 0 15px #ff4da6;
+cursor:pointer;
+}
+
+/* NOTE CARD — FULL MESSAGE SHOW */
+.noteCard{
+width:92%;
+max-width:360px;
+background:linear-gradient(135deg,#ff9ecf,#ff4da6);
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 25px #ff4da6;
+cursor:pointer;
+}
+
+.noteClosed{
+font-size:18px;
+font-weight:bold;
+}
+
+.noteOpen{
+display:none;
+margin-top:15px;
+background:white;
+color:#ff4da6;
+padding:20px;
+border-radius:15px;
+line-height:1.6;
+font-size:15px;
+}
+
+.noteCard.open .noteOpen{
+display:block;
+.teddyWrap{
+margin-bottom:20px;
+}
+}
+.teddyRing{
+width:140px;
+height:140px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+background:radial-gradient(circle,#ff4da6,#8a003f);
+box-shadow:0 0 40px #ff4da6;
+animation:heartbeat 1.5s infinite;
+}
+
+.teddyRing img{
+width:100px;
+border-radius:50%;
+}
+
+/* glowing pulse */
+@keyframes heartbeat{
+0%{transform:scale(1); box-shadow:0 0 25px #ff4da6;}
+50%{transform:scale(1.08); box-shadow:0 0 60px #ff0080;}
+100%{transform:scale(1); box-shadow:0 0 25px #ff4da6;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- hearts -->
+<script>
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(10+Math.random()*20)+"px";
+h.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(h);
+}
+</script>
+
+<audio id="bgMusic" loop>
+<source src="Tere Liye - Atif Aslam.mp3">
+</audio>
+
+<!-- SCREEN 1 -->
+ 
+<div class="screen active" id="s1">
+<div class="teddyWrap">
+  <div class="teddyRing">
+    <img src="teddy.png" alt="teddy">
+  </div>
+</div>
+<h1>Hey Ritika 💖</h1>
+<p>18 looks beautiful on you ✨</p>
+<button onclick="startSite()">Enter ❤️</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen hidden" id="s2">
+<h1>Beautiful Memories 💕</h1>
+
+<div class="swiper" id="swiper">
+<div class="card"><img src="pic1.jpeg"></div>
+<div class="card"><img src="pic2.jpeg"></div>
+<div class="card"><img src="pic3.jpeg"></div>
+<div class="card"><img src="pic4.jpeg"></div>
+<div class="card"><img src="pic5.jpeg"></div>
+<div class="card"><img src="pic6.jpeg"></div>
+</div><br><br>
+
+<button onclick="next('s2','video')">Play Video 🎥</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen hidden" id="video">
+<h1>Special For You 🎬</h1>
+
+<video id="bdayVideo" controls>
+<source src="video.mp4">
+</video><br>
+
+<button onclick="next('video','s3')">Next 💌</button>
+</div>
+
+<!-- SCREEN 4 MESSAGE -->
+<div class="screen hidden" id="s3">
+<h1>A Note For You ❤️</h1>
+
+<div class="noteCard" onclick="openNote()">
+
+<div class="noteClosed">💗 Tap to open 💗</div>
+
+<div class="noteOpen">
+Happy Birthday,<br><br>
+
+My Dear Queen Sister Ritika 👑<br><br>
+
+I want you to always be happy and successful in your Life.<br><br>
+
+I don't know how much I valuable in your life but  
+You are always Special in my life ❤️<br><br>
+
+Whether you remember me in your good times or not,  
+never forget in your bad times that<br><br>
+
+💖 You have a brother named Rishan Patel 💖<br><br>
+
+May your smile always shine like stars ✨  
+May your dreams come true 🌸  
+And may happiness follow you forever 💕
+</div><br>
+
+</div>
+
+<button onclick="next('s3','s4')">Final Surprise 🎁</button>
+</div>
+<!-- SCREEN 5 COUNTDOWN -->
+<div class="screen hidden" id="s4">
+<h1>Countdown To Your 18th 🎂</h1>
+<div class="counter" id="countdown"></div>
+</div>
+
+<script>
+
+let music = document.getElementById("bgMusic");
+let video = document.getElementById("bdayVideo");
+let swiper= document.getElementById("swiper");
+
+function startSite(){
+music.play();
+next('s1','s2');
+}
+
+function next(a,b){
+document.getElementById(a).classList.replace("active","hidden");
+let next=document.getElementById(b);
+next.classList.remove("hidden");
+setTimeout(()=>next.classList.add("active"),100);
+}
+
+swiper.onclick=()=>swiper.appendChild(swiper.firstElementChild);
+
+function openNote(){
+document.querySelector(".noteCard").classList.add("open");
+}
+
+video.onplay = () => music.pause();
+video.onpause = () => music.play();
+video.onended = () => music.play();
+
+function updateCountdown(){
+let birthday=new Date("Feb 28, 2026 00:00:00").getTime();
+let now=new Date().getTime();
+let gap=birthday-now;
+
+if(gap<=0){
+document.getElementById("countdown").innerHTML="🎉 It's Your Birthday 🎉";
+return;
+}
+
+let d=Math.floor(gap/(1000*60*60*24));
+let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((gap%(1000*60*60))/(1000*60));
+let s=Math.floor((gap%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+d+" Days "+h+" Hours "+m+" Min "+s+" Sec";
+}
+setInterval(updateCountdown,1000);
+
+</script>
+
+</body>
+</html>
